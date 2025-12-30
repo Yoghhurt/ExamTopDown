@@ -2,32 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private float speed;
+    [SerializeField] private float speed;
+
+    private Vector2 movement;
     
-    private Rigidbody2D rigidbody;
-    private Vector2 movementInput;
-    private Vector2 smoothMovementInput;
-    private Vector2 movementUnputSmoothVelocity;
+    private Rigidbody2D rb;
+    private Animator animator;
+
+    private const string horizontal = "Horizontal";
+    private const string vertical = "Vertical";
+    private const string lastHorizontal = "LastHorizontal";
+    private const string lastVertical = "LastVertical";
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        smoothMovementInput = Vector2.SmoothDamp(smoothMovementInput,
-            movementInput, ref movementUnputSmoothVelocity,
-            0.1f);
+        movement.Set(InputManager.Movement.x, InputManager.Movement.y);
         
-        rigidbody.linearVelocity = smoothMovementInput * speed;
-    }
+        rb.linearVelocity = movement * speed;
+        
+        animator.SetFloat(horizontal, movement.x);
+        animator.SetFloat(vertical, movement.y);
 
-    private void OnMove(InputValue inputValue)
-    {
-        movementInput = inputValue.Get<Vector2>();
+        if (movement != Vector2.zero)
+        {
+            animator.SetFloat(lastHorizontal, movement.x);
+            animator.SetFloat(lastVertical, movement.y);
+        }
     }
 }

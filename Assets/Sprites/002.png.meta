@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -137,10 +137,10 @@ TextureImporter:
       name: 002_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 32
-        width: 18
-        height: 95
+        x: 0
+        y: 96
+        width: 21
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,10 +159,10 @@ TextureImporter:
       name: 002_1
       rect:
         serializedVersion: 2
-        x: 21
+        x: 20
         y: 96
-        width: 18
-        height: 30
+        width: 21
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,10 +181,10 @@ TextureImporter:
       name: 002_2
       rect:
         serializedVersion: 2
-        x: 41
-        y: 32
-        width: 18
-        height: 95
+        x: 40
+        y: 96
+        width: 21
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,10 +203,10 @@ TextureImporter:
       name: 002_3
       rect:
         serializedVersion: 2
-        x: 23
+        x: 0
         y: 64
-        width: 15
-        height: 31
+        width: 21
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,10 +225,10 @@ TextureImporter:
       name: 002_4
       rect:
         serializedVersion: 2
-        x: 22
-        y: 32
-        width: 15
-        height: 31
+        x: 20
+        y: 64
+        width: 21
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,10 +247,10 @@ TextureImporter:
       name: 002_5
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 18
-        height: 31
+        x: 40
+        y: 64
+        width: 21
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -269,10 +269,10 @@ TextureImporter:
       name: 002_6
       rect:
         serializedVersion: 2
-        x: 21
-        y: 0
-        width: 18
-        height: 30
+        x: 0
+        y: 32
+        width: 21
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,10 +291,10 @@ TextureImporter:
       name: 002_7
       rect:
         serializedVersion: 2
-        x: 41
-        y: 0
-        width: 18
-        height: 31
+        x: 20
+        y: 32
+        width: 21
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,6 +305,94 @@ TextureImporter:
       bones: []
       spriteID: 84a40289468d5d9b0800000000000000
       internalID: -5055897080092931512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 002_8
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 32
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7d86f374a4aeaa459f3e5eedbd2f4e8
+      internalID: 190661694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 002_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ea98fec7037b5a49a5d71900d81bc16
+      internalID: -1743520398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 002_10
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 0
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 507fe5a0cc024b04b9e89d305823292f
+      internalID: 1237505679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 002_11
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 772a7f4c17cb6494e937625b3d3c4be1
+      internalID: 944702959
       vertices: []
       indices: 
       edges: []
@@ -325,12 +413,16 @@ TextureImporter:
     nameFileIdTable:
       002_0: 7417498029127908629
       002_1: 4440353514750019237
+      002_10: 1237505679
+      002_11: 944702959
       002_2: -8045800707232473503
       002_3: 8701309638641752994
       002_4: 4187577688158176072
       002_5: -2669798006401443879
       002_6: -1740119621459361255
       002_7: -5055897080092931512
+      002_8: 190661694
+      002_9: -1743520398
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
