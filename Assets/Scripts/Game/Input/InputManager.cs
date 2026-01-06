@@ -5,7 +5,7 @@ public class InputManager : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
 
-    [SerializeField] private float _timeBetweenShots;
+    [SerializeField] private float timeBetweenShots;
    
     [SerializeField] private float bulletSpeed;
 
@@ -15,25 +15,25 @@ public class InputManager : MonoBehaviour
     
     public static Vector2 Movement;
     
-    private PlayerInput playerInput;
-    private InputAction moveAction;
+    private PlayerInput _playerInput;
+    private InputAction _moveAction;
 
     private void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
+        _playerInput = GetComponent<PlayerInput>();
         
-        moveAction = playerInput.actions["Move"];
+        _moveAction = _playerInput.actions["Move"];
     }
 
     private void Update()
     {
-        Movement = moveAction.ReadValue<Vector2>();
+        Movement = _moveAction.ReadValue<Vector2>();
         
         if (_fireContinuously || _fireSingle)
         {
             float timeSinceLastFire = Time.time - _lastFireTime;
 
-            if (timeSinceLastFire >= _timeBetweenShots)
+            if (timeSinceLastFire >= timeBetweenShots)
             {
                 FireBullet();
                      
