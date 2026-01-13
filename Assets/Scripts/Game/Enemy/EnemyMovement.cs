@@ -8,34 +8,34 @@ public class EnemyMovement : MonoBehaviour
     
     private Rigidbody2D rb;
     private PlayerAwareness playerAwareness;
+    private Animator animator;
     private Vector2 targetDirection;
     private float _changeDirectionCooldown;
+
+    private const string horizontal = "Horizontal";
+    private const string vertical = "Vertical";
+    private const string lastHorizontal = "LastHorizontal";
+    private const string lastVertical = "LastVertical";
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerAwareness = GetComponent<PlayerAwareness>();
+        animator = GetComponent<Animator>();
         targetDirection = transform.up;
     }
 
     private void FixedUpdate()
     {
         UpdateTargetDirection();
-        RotateTowardsTarget();
         SetVelocity();
+        UpdateAnimation();
     }
-    private void RotateTowardsTarget()
-    {
-        Quaternion targetRotation = Quaternion.LookRotation(transform.forward, targetDirection);
-        Quaternion rotation = Quaternion.RotateTowards(transform.rotation,  targetRotation, rotationSpeed * Time.deltaTime );
-        
-        rb.SetRotation(rotation);
-    }
-
+    
     private void SetVelocity()
     {
         {
-            rb.linearVelocity = transform.up * speed;
+            rb.linearVelocity = targetDirection.normalized * speed;
         }
     }
 
@@ -69,6 +69,24 @@ public class EnemyMovement : MonoBehaviour
             targetDirection = rotaion * targetDirection;
 
             _changeDirectionCooldown = Random.Range(1f, 5f);
+        }
+    }
+    
+    private void UpdateAnimation()
+    {
+        if (animator == null)
+        {
+            return;
+        }
+
+        Vector2 direction = rb.linearVelocity.normalized;
+        animator.SetFloat(horizontal, direction.x);
+        animator.SetFloat(vertical, direction.y);
+
+        if (direction != Vector2.zero)
+        {
+            animator.SetFloat(lastHorizontal, direction.x);
+            animator.SetFloat(lastVertical, direction.y);
         }
     }
 }
