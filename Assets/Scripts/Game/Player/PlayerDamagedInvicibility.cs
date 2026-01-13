@@ -1,21 +1,17 @@
 using UnityEngine;
 
-[SerializeField]
-
-
-;
-
-public class PlayerDamagedInvicibility : MonoBehaviour
-
-private InvincibilityController _invincibilityController;
-
-void Awake()
+public class PlayerDamagedInvincibility : MonoBehaviour
 {
-    _invincibilityController = GetComponent<InvincibilityController>();
-}
+    [SerializeField]
+    private float _invincibilityDuration;
+    
+    private InvincibilityController _invincibilityController;
 
-{
-    void StartInvincibility()
+    private void Awake()
+    {
+        _invincibilityController = GetComponent<InvincibilityController>();
+    }
+    public void StartInvincibility()
     {
         _invincibilityController.StartInvincibility(_invincibilityDuration);
     }
