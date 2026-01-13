@@ -38,4 +38,9 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat(lastVertical, movement.y);
         }
     }
+
+    private void PreventOffScreen()
+    {
+        
+    }
 }
