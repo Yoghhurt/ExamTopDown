@@ -48,7 +48,11 @@ public class InputManager : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
       
-        rb.linearVelocity = bulletSpeed * transform.up;
+        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector2 direction = (mouseWorld - transform.position);
+        direction.Normalize();
+
+        rb.linearVelocity = direction * bulletSpeed;
     }
     
     private void OnAttack(InputValue inputValue)
