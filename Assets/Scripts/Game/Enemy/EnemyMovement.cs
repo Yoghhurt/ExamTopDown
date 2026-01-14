@@ -3,14 +3,21 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
-    
+
     [SerializeField] private float rotationSpeed;
+
+    [SerializeField] private float _obstacleCircleCastDistance;
+    [SerializeField] private float _obstacleCircleCastRadius;
+    [SerializeField] private LayerMask _obstacleLayerMask;
     
     private Rigidbody2D rb;
     private PlayerAwareness playerAwareness;
     private Animator animator;
     private Vector2 targetDirection;
     private float _changeDirectionCooldown;
+    private RaycastHit2D[] _obstacleCollisions; 
+    private float _obstacleAvoidanceCooldown;
+    private Vector2 _obstacleAvoidanceTargetDirection;
 
     private const string horizontal = "Horizontal";
     private const string vertical = "Vertical";
@@ -23,6 +30,7 @@ public class EnemyMovement : MonoBehaviour
         playerAwareness = GetComponent<PlayerAwareness>();
         animator = GetComponent<Animator>();
         targetDirection = transform.up;
+        _obstacleCollisions = new RaycastHit2D[10];
     }
 
     private void FixedUpdate()
@@ -47,6 +55,7 @@ public class EnemyMovement : MonoBehaviour
              }
              
         HandleRandomDirectionChange();
+        HandleObstacles();
         HandlePlayerTargeting();
     }
 
@@ -69,6 +78,42 @@ public class EnemyMovement : MonoBehaviour
             targetDirection = rotaion * targetDirection;
 
             _changeDirectionCooldown = Random.Range(1f, 5f);
+        }
+    }
+
+    private void HandleObstacles()
+    {
+        _obstacleAvoidanceCooldown -= Time.deltaTime;
+        
+        var contactFilter = new ContactFilter2D();
+        contactFilter.SetLayerMask(_obstacleLayerMask);
+        
+        int numberOfCollisions = Physics2D.CircleCast(transform.position, 
+            _obstacleCircleCastRadius, 
+            transform.up, 
+            contactFilter, _obstacleCollisions, 
+            _obstacleCircleCastDistance);
+
+        for (int index = 0; index < numberOfCollisions; index++)
+        {
+            var obstacleCollisions = _obstacleCollisions[index];
+
+            if (obstacleCollisions.collider.gameObject == gameObject)
+            {
+                continue;
+            }
+
+            if (_obstacleAvoidanceCooldown <= 0)
+            {
+                _obstacleAvoidanceTargetDirection = obstacleCollisions.normal;
+                _obstacleAvoidanceCooldown = 0.5f;
+            }
+            
+            var targetRotation = Quaternion.LookRotation(transform.forward, obstacleCollisions.normal);
+            var rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            
+            targetDirection = rotation * Vector2.up;
+            break;
         }
     }
     

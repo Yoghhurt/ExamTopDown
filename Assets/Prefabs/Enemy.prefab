@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -7529999873679616622}
   - component: {fileID: 6128178089556516308}
   - component: {fileID: 7778466896848784103}
+  - component: {fileID: 1445975167451932427}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -115,7 +116,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.84, y: 1.28}
+  m_Size: {x: 0.8, y: 0.76}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -148,6 +149,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   rotationSpeed: 100
+  _obstacleCircleCastDistance: 0.45
+  _obstacleCircleCastRadius: 1
+  _obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!58 &7998850209539562435
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -257,3 +263,25 @@ MonoBehaviour:
   OnHealthChange:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &1445975167451932427
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116999896628517412}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 275410c0d7bd2e24187a8ab8edc10b79, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
