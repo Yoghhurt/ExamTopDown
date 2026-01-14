@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float _timeBeforeExit;
     
+    [SerializeField]
+    private SceneController _sceneController;
     public void OnPlayerDeath()
     {
         Invoke(nameof(EndGame), _timeBeforeExit);
@@ -13,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
-        SceneManager.LoadScene("MainMenu");
+        _sceneController.LoadScene("MainMenu");
+        
     }
 }
