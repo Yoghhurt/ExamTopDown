@@ -18,6 +18,9 @@ GameObject:
   - component: {fileID: 6128178089556516308}
   - component: {fileID: 7778466896848784103}
   - component: {fileID: 1445975167451932427}
+  - component: {fileID: 6565000128292903637}
+  - component: {fileID: 4911230268973541449}
+  - component: {fileID: 153347262223391771}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -269,9 +272,33 @@ MonoBehaviour:
           m_StringArgument: OnDeath
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6565000128292903637}
+        m_TargetAssemblyTypeName: EnemyScoreAllocator, Assembly-CSharp
+        m_MethodName: AllocateScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OnDeath
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 153347262223391771}
+        m_TargetAssemblyTypeName: EnemyDamagedFlash, Assembly-CSharp
+        m_MethodName: StartFlash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealthChange:
     m_PersistentCalls:
       m_Calls: []
@@ -297,3 +324,43 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6565000128292903637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116999896628517412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb1d29eef53c1241880292460dcd656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _killScore: 10
+--- !u!114 &4911230268973541449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116999896628517412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c44ac27e31f250e4ca9e107c17a9ad1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &153347262223391771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116999896628517412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd013e840941a114ebd954c75a44f54f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashDuration: 0.2
+  _flashColor: {r: 1, g: 0, b: 0, a: 1}
+  _numberOfFlashes: 1
