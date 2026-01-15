@@ -36,6 +36,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        HandlePlayerTargeting();
         SetVelocity();
         UpdateAnimation();
     }
