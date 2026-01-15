@@ -14,15 +14,25 @@ public class EnemySpawner : MonoBehaviour
     {
         SetTimeUntilSpawn();
     }
+    
+    private void OnValidate()
+    {
+        if (_miniumSpawnTime < 0f)
+        {
+            _miniumSpawnTime = 0f;
+        }
+
+        if (_maxiumSpawnTime < _miniumSpawnTime)
+        {
+            _maxiumSpawnTime = _miniumSpawnTime;
+        }
+    }
 
     void Update()
     {
-        _timeUntilSpawn -= Time.deltaTime;
-
-        if (_timeUntilSpawn <= 0)
+        if (_enemyPrefab == null)
         {
-            Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
-            SetTimeUntilSpawn();
+            return;
         }
     }
     

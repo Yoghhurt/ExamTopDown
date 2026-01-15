@@ -6,7 +6,7 @@ public class EnemyAttack : MonoBehaviour
 {
     [SerializeField]
     private float _damageAmount;
-
+    
     private void OnTriggerStay2D(Collider2D other)
     {
         TryDealDamage(other.gameObject);
