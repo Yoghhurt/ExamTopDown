@@ -17,7 +17,6 @@ public class EnemyMovement : MonoBehaviour
     private float _changeDirectionCooldown;
     private RaycastHit2D[] _obstacleCollisions; 
     private float _obstacleAvoidanceCooldown;
-    private Vector2 _obstacleAvoidanceTargetDirection;
 
     private const string horizontal = "Horizontal";
     private const string vertical = "Vertical";
@@ -35,7 +34,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        UpdateTargetDirection();
         SetVelocity();
         UpdateAnimation();
     }
@@ -46,18 +44,7 @@ public class EnemyMovement : MonoBehaviour
             rb.linearVelocity = targetDirection.normalized * speed;
         }
     }
-
-    private void UpdateTargetDirection()
-    { 
-        if (playerAwareness.AwareOfPlayer)
-             {
-                 targetDirection = playerAwareness.DirectionToPlayer;
-             }
-             
-        HandleRandomDirectionChange();
-        HandleObstacles();
-        HandlePlayerTargeting();
-    }
+    
 
     private void HandlePlayerTargeting()
     {
@@ -65,6 +52,11 @@ public class EnemyMovement : MonoBehaviour
         {
             targetDirection = playerAwareness.DirectionToPlayer;
         }
+        else
+        {
+            HandleRandomDirectionChange();
+        }
+        HandleObstacles();
     }
 
     private void HandleRandomDirectionChange()
@@ -90,7 +82,7 @@ public class EnemyMovement : MonoBehaviour
         
         int numberOfCollisions = Physics2D.CircleCast(transform.position, 
             _obstacleCircleCastRadius, 
-            transform.up, 
+             targetDirection, 
             contactFilter, _obstacleCollisions, 
             _obstacleCircleCastDistance);
 
@@ -105,7 +97,6 @@ public class EnemyMovement : MonoBehaviour
 
             if (_obstacleAvoidanceCooldown <= 0)
             {
-                _obstacleAvoidanceTargetDirection = obstacleCollisions.normal;
                 _obstacleAvoidanceCooldown = 0.5f;
             }
             
