@@ -6,31 +6,15 @@ public class EnemyAttack : MonoBehaviour
 {
     [SerializeField]
     private float _damageAmount;
-    
-    private void OnTriggerStay2D(Collider2D other)
+
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        TryDealDamage(other.gameObject);
-    }
-
-    private void TryDealDamage(GameObject target)
-    {
-        var playerMovement = target.GetComponentInParent<PlayerMovement>()
-                             ?? target.GetComponentInChildren<PlayerMovement>();
-
-        if (playerMovement == null)
+        if (collision.gameObject.GetComponent<PlayerMovement>())
         {
-            return;
+            var healthController = collision.gameObject.GetComponent<HealthController>();
+            
+            healthController.TakeDamage(_damageAmount); 
         }
-
-        var healthController = playerMovement.GetComponent<HealthController>()
-                               ?? playerMovement.GetComponentInParent<HealthController>()
-                               ?? playerMovement.GetComponentInChildren<HealthController>();
-
-        if (healthController == null)
-        {
-            return;
-        }
-        healthController.TakeDamage(_damageAmount);
     }
 }
 

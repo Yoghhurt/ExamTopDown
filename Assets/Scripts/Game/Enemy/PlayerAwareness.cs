@@ -8,28 +8,16 @@ public class PlayerAwareness : MonoBehaviour
     
     [SerializeField] private float playerAwarenessDistance;
     
-    [SerializeField] private PlayerMovement playerMovement;
+    private Transform _player;
 
     private void Awake()
     {
-        TryResolvePlayer();
+        _player = FindObjectOfType<PlayerMovement>().transform;
     }
 
     void Update()
     {
-        if (playerMovement == null)
-        {
-            TryResolvePlayer();
-        }
-
-        if (playerMovement == null)
-        {
-            AwareOfPlayer = false;
-            DirectionToPlayer = Vector2.zero;
-            return;
-        }
-
-        Vector2 enemyToPlayerVector = playerMovement.transform.position - transform.position;
+        Vector2 enemyToPlayerVector = _player.position - transform.position;
         DirectionToPlayer = enemyToPlayerVector.normalized;
 
         if (enemyToPlayerVector.magnitude <= playerAwarenessDistance)
@@ -40,10 +28,5 @@ public class PlayerAwareness : MonoBehaviour
         {
             AwareOfPlayer = false;
         }
-    }
-
-    private void TryResolvePlayer()
-    {
-        playerMovement = FindObjectOfType<PlayerMovement>();
     }
 }

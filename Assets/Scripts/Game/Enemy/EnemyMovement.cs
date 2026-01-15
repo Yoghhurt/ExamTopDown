@@ -9,16 +9,17 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float _obstacleCircleCastDistance;
     [SerializeField] private float _obstacleCircleCastRadius;
     [SerializeField] private LayerMask _obstacleLayerMask;
-
+    
     private Rigidbody2D rb;
-
     private PlayerAwareness playerAwareness;
-
     private Animator animator;
     private Vector2 targetDirection;
     private float _changeDirectionCooldown;
-    private RaycastHit2D[] _obstacleCollisions;
+    private RaycastHit2D[] _obstacleCollisions; 
     private float _obstacleAvoidanceCooldown;
+    private Vector2 _obstacleAvoidanceTargetDirection;
+    
+    
 
     private const string horizontal = "Horizontal";
     private const string vertical = "Vertical";
@@ -36,7 +37,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        HandlePlayerTargeting();
+        UpdateTargetDirection();
         SetVelocity();
         UpdateAnimation();
     }
@@ -55,12 +56,18 @@ public class EnemyMovement : MonoBehaviour
         {
             targetDirection = playerAwareness.DirectionToPlayer;
         }
-        else
+    }
+    
+    private void UpdateTargetDirection()
+    { 
+        if (playerAwareness.AwareOfPlayer)
         {
-            HandleRandomDirectionChange();
+            targetDirection = playerAwareness.DirectionToPlayer;
         }
-
+             
+        HandleRandomDirectionChange();
         HandleObstacles();
+        HandlePlayerTargeting();
     }
 
     private void HandleRandomDirectionChange()

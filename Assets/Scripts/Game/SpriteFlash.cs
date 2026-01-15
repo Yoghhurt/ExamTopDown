@@ -13,13 +13,13 @@ public class SpriteFlash : MonoBehaviour
     public IEnumerator FlashCoroutine(float flashDuration, Color flashColor, int numberOfFlashes)
     {
         Color startColor = _spriteRenderer.color;
-        float elaspedTime = 0;
+        float elapsedTime = 0;
         float elapsedPercentage = 0;
 
-        while (elapsedPercentage < flashDuration)
+        while (elapsedTime < flashDuration)
         {
-            elaspedTime += Time.deltaTime;
-            elapsedPercentage = elaspedTime / flashDuration;
+            elapsedTime += Time.deltaTime;
+            elapsedPercentage = elapsedTime / flashDuration;
 
             if (elapsedPercentage > 1)
             {
@@ -31,5 +31,6 @@ public class SpriteFlash : MonoBehaviour
             
             yield return null;
         }
+        _spriteRenderer.color = startColor;
     }
 }

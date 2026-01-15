@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     private SceneController _sceneController;
     public void Play()
     {
-        _sceneController.LoadScene("Game");
+        _sceneController.LoadScene("MainScene");
     }
 
     public void Exit()
