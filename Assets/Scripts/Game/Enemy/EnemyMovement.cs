@@ -9,13 +9,15 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float _obstacleCircleCastDistance;
     [SerializeField] private float _obstacleCircleCastRadius;
     [SerializeField] private LayerMask _obstacleLayerMask;
-    
+
     private Rigidbody2D rb;
+
     private PlayerAwareness playerAwareness;
-    private Animator animator;
+
+    //private Animator animator;
     private Vector2 targetDirection;
     private float _changeDirectionCooldown;
-    private RaycastHit2D[] _obstacleCollisions; 
+    private RaycastHit2D[] _obstacleCollisions;
     private float _obstacleAvoidanceCooldown;
 
     private const string horizontal = "Horizontal";
@@ -27,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerAwareness = GetComponent<PlayerAwareness>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         targetDirection = transform.up;
         _obstacleCollisions = new RaycastHit2D[10];
     }
@@ -35,16 +37,16 @@ public class EnemyMovement : MonoBehaviour
     private void FixedUpdate()
     {
         SetVelocity();
-        UpdateAnimation();
+        //UpdateAnimation();
     }
-    
+
     private void SetVelocity()
     {
         {
             rb.linearVelocity = targetDirection.normalized * speed;
         }
     }
-    
+
 
     private void HandlePlayerTargeting()
     {
@@ -56,6 +58,7 @@ public class EnemyMovement : MonoBehaviour
         {
             HandleRandomDirectionChange();
         }
+
         HandleObstacles();
     }
 
@@ -76,14 +79,14 @@ public class EnemyMovement : MonoBehaviour
     private void HandleObstacles()
     {
         _obstacleAvoidanceCooldown -= Time.deltaTime;
-        
+
         var contactFilter = new ContactFilter2D();
         contactFilter.SetLayerMask(_obstacleLayerMask);
-        
-        int numberOfCollisions = Physics2D.CircleCast(transform.position, 
-            _obstacleCircleCastRadius, 
-             targetDirection, 
-            contactFilter, _obstacleCollisions, 
+
+        int numberOfCollisions = Physics2D.CircleCast(transform.position,
+            _obstacleCircleCastRadius,
+            targetDirection,
+            contactFilter, _obstacleCollisions,
             _obstacleCircleCastDistance);
 
         for (int index = 0; index < numberOfCollisions; index++)
@@ -99,30 +102,31 @@ public class EnemyMovement : MonoBehaviour
             {
                 _obstacleAvoidanceCooldown = 0.5f;
             }
-            
+
             var targetRotation = Quaternion.LookRotation(transform.forward, obstacleCollisions.normal);
             var rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            
+
             targetDirection = rotation * Vector2.up;
             break;
         }
     }
-    
-    private void UpdateAnimation()
+}
+
+/*private void UpdateAnimation()
+{
+    if (animator == null)
     {
-        if (animator == null)
-        {
-            return;
-        }
+        return;
+    }
 
-        Vector2 direction = rb.linearVelocity.normalized;
-        animator.SetFloat(horizontal, direction.x);
-        animator.SetFloat(vertical, direction.y);
+    Vector2 direction = rb.linearVelocity.normalized;
+    animator.SetFloat(horizontal, direction.x);
+    animator.SetFloat(vertical, direction.y);
 
-        if (direction != Vector2.zero)
-        {
-            animator.SetFloat(lastHorizontal, direction.x);
-            animator.SetFloat(lastVertical, direction.y);
-        }
+    if (direction != Vector2.zero)
+    {
+        animator.SetFloat(lastHorizontal, direction.x);
+        animator.SetFloat(lastVertical, direction.y);
     }
 }
+}*/
