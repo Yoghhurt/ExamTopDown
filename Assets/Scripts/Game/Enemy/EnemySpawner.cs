@@ -34,6 +34,15 @@ public class EnemySpawner : MonoBehaviour
         {
             return;
         }
+        _timeUntilSpawn -= Time.deltaTime;
+
+        if (_timeUntilSpawn > 0f)
+        {
+            return;
+        }
+
+        Instantiate(_enemyPrefab, transform.position, transform.rotation);
+        SetTimeUntilSpawn();
     }
     
     private void SetTimeUntilSpawn()

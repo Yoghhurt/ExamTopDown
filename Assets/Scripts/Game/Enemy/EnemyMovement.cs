@@ -14,7 +14,7 @@ public class EnemyMovement : MonoBehaviour
 
     private PlayerAwareness playerAwareness;
 
-    //private Animator animator;
+    private Animator animator;
     private Vector2 targetDirection;
     private float _changeDirectionCooldown;
     private RaycastHit2D[] _obstacleCollisions;
@@ -29,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerAwareness = GetComponent<PlayerAwareness>();
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         targetDirection = transform.up;
         _obstacleCollisions = new RaycastHit2D[10];
     }
@@ -37,7 +37,7 @@ public class EnemyMovement : MonoBehaviour
     private void FixedUpdate()
     {
         SetVelocity();
-        //UpdateAnimation();
+        UpdateAnimation();
     }
 
     private void SetVelocity()
@@ -110,23 +110,22 @@ public class EnemyMovement : MonoBehaviour
             break;
         }
     }
+    private void UpdateAnimation()
+     {
+     
+         if (animator == null)
+         {
+             return;
+         }
+     
+         Vector2 direction = rb.linearVelocity.normalized;
+         animator.SetFloat(horizontal, direction.x);
+         animator.SetFloat(vertical, direction.y);
+     
+         if (direction != Vector2.zero)
+         {
+             animator.SetFloat(lastHorizontal, direction.x);
+             animator.SetFloat(lastVertical, direction.y);
+         }
+     }
 }
-
-/*private void UpdateAnimation()
-{
-    if (animator == null)
-    {
-        return;
-    }
-
-    Vector2 direction = rb.linearVelocity.normalized;
-    animator.SetFloat(horizontal, direction.x);
-    animator.SetFloat(vertical, direction.y);
-
-    if (direction != Vector2.zero)
-    {
-        animator.SetFloat(lastHorizontal, direction.x);
-        animator.SetFloat(lastVertical, direction.y);
-    }
-}
-}*/
