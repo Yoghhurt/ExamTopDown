@@ -4,7 +4,7 @@ public class EnemyScoreAllocator : MonoBehaviour
 {
    [SerializeField] private EnemyAttributes _enemyAttributes;
    
-   [SerializeField] private ScoreController _scoreController;
+   private ScoreController _scoreController;
 
    private void Awake()
    {

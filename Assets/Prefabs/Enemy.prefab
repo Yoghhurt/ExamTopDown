@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 4911230268973541449}
   - component: {fileID: 153347262223391771}
   - component: {fileID: 5649839327074024553}
+  - component: {fileID: 1013024875020128823}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -279,6 +280,30 @@ MonoBehaviour:
           m_StringArgument: OnDeath
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3853913687290602524}
+        m_TargetAssemblyTypeName: EnemyMovement, Assembly-CSharp
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OnDeath
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1013024875020128823}
+        m_TargetAssemblyTypeName: EnemyDestroyController, Assembly-CSharp
+        m_MethodName: DestroyEnemy
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: OnDeath
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDamage:
     m_PersistentCalls:
       m_Calls:
@@ -372,3 +397,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyAttributes: {fileID: 11400000, guid: f14633e4258bbc84cb8dcfe2d14c050c, type: 2}
+--- !u!114 &1013024875020128823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116999896628517412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c387852112652b479dcdcbc061dd0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

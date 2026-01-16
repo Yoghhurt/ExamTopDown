@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class ScoreController : MonoBehaviour
 {
-    public UnityEvent OnScoreChange = new UnityEvent();
+    public UnityEvent OnScoreChange;
     public int Score {get; private set;}
 
     public void AddScore(int amount)
