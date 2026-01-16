@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class EnemyCollectableDrop : MonoBehaviour
 {
-    [SerializeField]
-    private float _chanceOfDrop;
+    [SerializeField] private EnemyAttributes _enemyAttributes;
     
     private CollectableSpawner _collectableSpawner;
 
@@ -16,7 +15,7 @@ public class EnemyCollectableDrop : MonoBehaviour
     {
         float random = Random.Range(0f, 1f);
 
-        if (_chanceOfDrop >= random)
+        if (_enemyAttributes.ChanceOfCollectableDrop >= random)
         {
             _collectableSpawner.SpawnCollectable(transform.position);
         }

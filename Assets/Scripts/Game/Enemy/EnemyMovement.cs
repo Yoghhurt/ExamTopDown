@@ -2,13 +2,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
-
-    [SerializeField] private float rotationSpeed;
-
-    [SerializeField] private float _obstacleCircleCastDistance;
-    [SerializeField] private float _obstacleCircleCastRadius;
-    [SerializeField] private LayerMask _obstacleLayerMask;
+    [SerializeField] private EnemyAttributes _enemyAttributes;
     
     private Rigidbody2D rb;
     private PlayerAwareness playerAwareness;
@@ -45,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
     private void SetVelocity()
     {
         {
-            rb.linearVelocity = targetDirection.normalized * speed;
+            rb.linearVelocity = targetDirection.normalized * _enemyAttributes.Speed;
         }
     }
 
@@ -89,13 +83,13 @@ public class EnemyMovement : MonoBehaviour
         _obstacleAvoidanceCooldown -= Time.deltaTime;
 
         var contactFilter = new ContactFilter2D();
-        contactFilter.SetLayerMask(_obstacleLayerMask);
+        contactFilter.SetLayerMask(_enemyAttributes.ObstacleLayer);
 
         int numberOfCollisions = Physics2D.CircleCast(transform.position,
-            _obstacleCircleCastRadius,
+            _enemyAttributes.ObstacleCheckCircleRadius,
             targetDirection,
             contactFilter, _obstacleCollisions,
-            _obstacleCircleCastDistance);
+            _enemyAttributes.ObstacleCheckDistance);
 
         for (int index = 0; index < numberOfCollisions; index++)
         {
@@ -112,7 +106,7 @@ public class EnemyMovement : MonoBehaviour
             }
 
             var targetRotation = Quaternion.LookRotation(transform.forward, obstacleCollisions.normal);
-            var rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            var rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _enemyAttributes.RotationSpeed * Time.deltaTime);
 
             targetDirection = rotation * Vector2.up;
             break;

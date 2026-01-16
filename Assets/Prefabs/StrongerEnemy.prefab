@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: _damageAmount
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: -7529999873679616622, guid: d131635016b78154fa3412916a1329f0, type: 3}
+      propertyPath: _enemyAttributes
+      value: 
+      objectReference: {fileID: 11400000, guid: 292ac643ec3c1ff4fa4c3566cb994350, type: 2}
     - target: {fileID: 1304412291825665675, guid: d131635016b78154fa3412916a1329f0, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -66,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2116999896628517412, guid: d131635016b78154fa3412916a1329f0, type: 3}
       propertyPath: m_Name
-      value: Stronger Enemy
+      value: StrongerEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 3853913687290602524, guid: d131635016b78154fa3412916a1329f0, type: 3}
       propertyPath: speed
@@ -76,14 +80,34 @@ PrefabInstance:
       propertyPath: rotationSpeed
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 3853913687290602524, guid: d131635016b78154fa3412916a1329f0, type: 3}
+      propertyPath: _enemyAttributes
+      value: 
+      objectReference: {fileID: 11400000, guid: 292ac643ec3c1ff4fa4c3566cb994350, type: 2}
+    - target: {fileID: 4538819056309927853, guid: d131635016b78154fa3412916a1329f0, type: 3}
+      propertyPath: _enemyAttributes
+      value: 
+      objectReference: {fileID: 11400000, guid: 292ac643ec3c1ff4fa4c3566cb994350, type: 2}
+    - target: {fileID: 5649839327074024553, guid: d131635016b78154fa3412916a1329f0, type: 3}
+      propertyPath: _enemyAttributes
+      value: 
+      objectReference: {fileID: 11400000, guid: 292ac643ec3c1ff4fa4c3566cb994350, type: 2}
     - target: {fileID: 6128178089556516308, guid: d131635016b78154fa3412916a1329f0, type: 3}
       propertyPath: _chanceOfDrop
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6128178089556516308, guid: d131635016b78154fa3412916a1329f0, type: 3}
+      propertyPath: _enemyAttributes
+      value: 
+      objectReference: {fileID: 11400000, guid: 292ac643ec3c1ff4fa4c3566cb994350, type: 2}
     - target: {fileID: 6565000128292903637, guid: d131635016b78154fa3412916a1329f0, type: 3}
       propertyPath: _killScore
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 6565000128292903637, guid: d131635016b78154fa3412916a1329f0, type: 3}
+      propertyPath: _enemyAttributes
+      value: 
+      objectReference: {fileID: 11400000, guid: 292ac643ec3c1ff4fa4c3566cb994350, type: 2}
     - target: {fileID: 7778466896848784103, guid: d131635016b78154fa3412916a1329f0, type: 3}
       propertyPath: _maxHealth
       value: 30

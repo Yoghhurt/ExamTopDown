@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 6565000128292903637}
   - component: {fileID: 4911230268973541449}
   - component: {fileID: 153347262223391771}
+  - component: {fileID: 5649839327074024553}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -137,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6dc5634c5ee5ef43bb5acf9223a1e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAwarenessDistance: 1000
+  _enemyAttributes: {fileID: 11400000, guid: f14633e4258bbc84cb8dcfe2d14c050c, type: 2}
 --- !u!114 &3853913687290602524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,13 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab90d89f5e01cd48a003c157401eaaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  rotationSpeed: 100
-  _obstacleCircleCastDistance: 0.45
-  _obstacleCircleCastRadius: 1
-  _obstacleLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
+  _enemyAttributes: {fileID: 11400000, guid: f14633e4258bbc84cb8dcfe2d14c050c, type: 2}
 --- !u!58 &7998850209539562435
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -205,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 445baad773a357a4384edfe56434f840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageAmount: 10
+  _enemyAttributes: {fileID: 11400000, guid: f14633e4258bbc84cb8dcfe2d14c050c, type: 2}
 --- !u!114 &6128178089556516308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f78eacc6683ac04bb38d9de538b3776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chanceOfDrop: 0.3
+  _enemyAttributes: {fileID: 11400000, guid: f14633e4258bbc84cb8dcfe2d14c050c, type: 2}
 --- !u!114 &7778466896848784103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb1d29eef53c1241880292460dcd656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _killScore: 10
+  _enemyAttributes: {fileID: 11400000, guid: f14633e4258bbc84cb8dcfe2d14c050c, type: 2}
 --- !u!114 &4911230268973541449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,3 +359,16 @@ MonoBehaviour:
   _flashDuration: 0.2
   _flashColor: {r: 1, g: 0, b: 0, a: 1}
   _numberOfFlashes: 1
+--- !u!114 &5649839327074024553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116999896628517412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1516837f160a441a794fffbd7203b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyAttributes: {fileID: 11400000, guid: f14633e4258bbc84cb8dcfe2d14c050c, type: 2}
