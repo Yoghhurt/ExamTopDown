@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151534897db53fb45a4c0561e473c4c8, type: 3}
   m_Name: Enemy Attributes
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 0
-  <RotationSpeed>k__BackingField: 0
-  <Health>k__BackingField: 0
-  <PlayerAwarenessDistance>k__BackingField: 0
-  <DamageAmount>k__BackingField: 0
-  <KillScore>k__BackingField: 0
-  <ChanceOfCollectableDrop>k__BackingField: 0
-  <ObstacleCheckCircleRadius>k__BackingField: 0
-  <ObstacleCheckDistance>k__BackingField: 0
+  <Speed>k__BackingField: 1
+  <RotationSpeed>k__BackingField: 100
+  <Health>k__BackingField: 10
+  <PlayerAwarenessDistance>k__BackingField: 1000
+  <DamageAmount>k__BackingField: 10
+  <KillScore>k__BackingField: 10
+  <ChanceOfCollectableDrop>k__BackingField: 0.3
+  <ObstacleCheckCircleRadius>k__BackingField: 0.45
+  <ObstacleCheckDistance>k__BackingField: 1
   <ObstacleLayer>k__BackingField:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
